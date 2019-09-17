@@ -36,6 +36,7 @@
     var MAX_LENGTH = 524288;  // the default max length per the html maxlength attribute
     var PAUSE = 500;
     var BLUR_TIMEOUT = 200;
+    var LIMIT_LENGTH = 10;
 
     // string constants
     var REQUIRED_CLASS = 'autocomplete-required';
@@ -50,7 +51,7 @@
         '  <div id="{{id}}_dropdown" class="angucomplete-dropdown" ng-show="showDropdown">' +
         '    <div class="angucomplete-searching" ng-show="searching" ng-bind="textSearching"></div>' +
         '    <div class="angucomplete-searching" ng-show="!searching && (!results || results.length == 0)" ng-bind="textNoResults"></div>' +
-        '    <div class="angucomplete-row" ng-repeat="result in results | limitTo: 10" ng-click="selectResult(result)" ng-mouseenter="hoverRow($index)" ng-class="{\'angucomplete-selected-row\': $index == currentIndex}">' +
+        '    <div class="angucomplete-row" ng-repeat="result in results | limitTo: LIMIT_LENGTH" ng-click="selectResult(result)" ng-mouseenter="hoverRow($index)" ng-class="{\'angucomplete-selected-row\': $index == currentIndex}">' +
         '      <div ng-if="imageField" class="angucomplete-image-holder">' +
         '        <img ng-if="result.image && result.image != \'\'" ng-src="{{result.image}}" class="angucomplete-image"/>' +
         '        <div ng-if="!result.image && result.image != \'\'" class="angucomplete-image-default"></div>' +
@@ -59,6 +60,7 @@
         '      <div class="angucomplete-title" ng-if="!matchClass">{{ result.title }}</div>' +
         '      <div ng-if="matchClass && result.description && result.description != \'\'" class="angucomplete-description" ng-bind-html="result.description"></div>' +
         '      <div ng-if="!matchClass && result.description && result.description != \'\'" class="angucomplete-description">{{result.description}}</div>' +
+        '      <div ng-if="results.length > LIMIT_LENGTH" class="angucomplete-description">Showing first {{LIMIT_LENGTH}} results...</div>' +
         '    </div>' +
         '  </div>' +
         '</div>'
