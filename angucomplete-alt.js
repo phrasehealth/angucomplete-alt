@@ -60,8 +60,8 @@
         '      <div class="angucomplete-title" ng-if="!matchClass">{{ result.title }}</div>' +
         '      <div ng-if="matchClass && result.description && result.description != \'\'" class="angucomplete-description" ng-bind-html="result.description"></div>' +
         '      <div ng-if="!matchClass && result.description && result.description != \'\'" class="angucomplete-description">{{result.description}}</div>' +
-        '      <div ng-if="results.length > LIMIT_LENGTH" class="angucomplete-description">Showing first {{LIMIT_LENGTH}} results...</div>' +
         '    </div>' +
+        '    <div class="angucomplete-row" ng-if="results.length > LIMIT_LENGTH">Showing first {{LIMIT_LENGTH}} results...</div>' +
         '  </div>' +
         '</div>'
     );
